@@ -1,0 +1,16 @@
+{
+  "name": "pizza-ecommerce",
+  "version": "2.0.0",
+  "description": "A pizza ecommerce website made with vanilla Nodejs",
+  "main": "index.js",
+  "repository": "https://github.com/RenanGalvao/pizza-ecommerce",
+  "author": "Renan Machado",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "NODE_ENV=production node index.js",
+    "dev": "NODE_ENV=develop node index.js",
+    "build": "node build.js"
+  },
+  "type": "module"
+}
