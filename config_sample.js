@@ -30,8 +30,8 @@ environments.development = {
 
 // Production
 environments.production = {
-  httpPort: 3001,
-  httpsPort: 3000,
+  httpPort: 3000,
+  httpsPort: 3001,
   envName: 'production',
   hashingSecret: process.env.NODE_SECRET,
   stripeApiKey: process.env.STRIPE_API_KEY,
