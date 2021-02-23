@@ -1,13 +1,15 @@
-# Pizza Delivery API
-A simple API for managing pizza orders made with Vanilla NodeJs.
+(this readme.md file needs to be updated)
+
+# Pizza Ecommerce
+A pizza ecommerce website made with vanilla Nodejs.
 
 ## How to Install
 1. Using your terminal: 
 ```sh
-git clone git@github.com:RenanGalvao/pizza-delivery-api.git
+git clone git@github.com:RenanGalvao/pizza-ecommerce.git
 ```
 
-or download the zipped version from [master](https://github.com/RenanGalvao/pizza-delivery-api/archive/master.zip).
+or download the zipped version from [master](https://github.com/RenanGalvao/pizza-ecommerce/archive/master.zip).
 
 2. Then, after unzipping, inside `https` directory run:
 ```sh
