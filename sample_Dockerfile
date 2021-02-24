@@ -1,0 +1,16 @@
+FROM node:12
+
+WORKDIR /opt/pizza-ecommerce
+
+COPY . .
+
+ENV NODE_SECRET=kekisnide \
+    STRIPE_API_KEY=your_key \
+    MAILGUN_API_KEY=your_key \
+    MAILGUN_DOMAIN=your_domain
+
+EXPOSE 3000
+
+CMD ["sh", "build.sh"]
+
+CMD ["npm", "start"]
