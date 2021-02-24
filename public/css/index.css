@@ -1,0 +1,21 @@
+/**
+* Index
+**/
+#landing {
+    width: 100%;
+    min-height: 20rem;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url(/public/images/landing-bg.png);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#landing #caption {
+    font-family: 'La Belle Aurore', 'Lato', sans-serif;
+    font-size: 1rem;
+    color: #fff;
+}
+#landing #action-button {
+    
+}

@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=La+Belle+Aurore&family=Lato:ital,wght@0,100;0,300;0,400;0,700;1,100;1,300;1,400;1,700&display=swap');
+body {
+    width: 100vw;
+    overflow-x: hidden;
+    font-family: 'Lato', sans-serif;
+}
+* {
+    box-sizing: border-box;
+}
+
+/**
+* Navbar
+**/
+#navbar {
+    width: 100%;
+    height: 75px;
+    padding: .875rem 1.25rem;
+    background-color: #EF0040;
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#navbar #brand {
+    display: flex;
+    align-items: center;
+}
+#navbar #brand img {
+    width: 3.125rem;
+    height: 3.125rem;
+}
+#navbar #brand h1 {
+    margin: 0;
+    margin-left: .5rem;
+    display: inline-block;
+
+    font-size: 1.375rem;
+    letter-spacing: 0.1em;
+    color: #fff;
+}
+#navbar #user-menu {
+    width: 2.813rem;
+    height: 2.813rem;
+    background-image: url(/public/svg/user_menu.svg);
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
