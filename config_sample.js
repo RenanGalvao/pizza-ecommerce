@@ -13,7 +13,7 @@ environments.development = {
   mailGunDomainName: 'your_domain_here',
   mailGunApiHostname: 'api.mailgun.net',
   templateGlobals: {
-    appName: 'Pizza Delivery',
+    appName: 'Pizza Luv',
     baseURL: 'http://localhost:3000',
     companyName: 'Home Inc.',
     yearCreated: 2021,
@@ -40,7 +40,7 @@ environments.production = {
   mailGunDomainName: process.env.MAILGUN_DOMAIN,
   mailGunApiHostname: 'api.mailgun.net',
   templateGlobals: {
-    appName: 'Pizza Delivery',
+    appName: 'Pizza Luv',
     baseURL: 'http://localhost:3000',
     companyName: 'Home Inc.',
     yearCreated: 2021,
