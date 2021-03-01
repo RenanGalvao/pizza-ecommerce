@@ -4,7 +4,22 @@ services:
     container_name: pizza-ecommerce
     restart: always
     build: .
-    ports:
-      - 80:3000
     volumes:
-      - /opt/pizza-ecommerce/data:/opt/pizza-ecommerce/.data
+      - pizza-ecommerce-db:/opt/pizza-ecommerce/.data
+      - public:/opt/pizza-ecommerce/public
+
+  webserver:
+    container_name: webserver
+    restart: unless-stopped
+    image: nginx:mainline-alpine
+    ports:
+      - 80:80
+    volumes:
+    - ./nginx-conf:/etc/nginx/conf.d
+    - public:/var/www/public
+    depends_on:
+      - app
+
+volumes:
+  public:
+  pizza-ecommerce-db:
