@@ -2,3 +2,4 @@ TODO
 config.js
 *.pen
 Dockerfile
+.data
