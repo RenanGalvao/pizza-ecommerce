@@ -2,7 +2,7 @@ version: '3'
 services:
   app:
     container_name: pizza-ecommerce
-    restart: always
+    restart: unless-stopped
     build: .
     volumes:
       - pizza-ecommerce-db:/opt/pizza-ecommerce/.data
