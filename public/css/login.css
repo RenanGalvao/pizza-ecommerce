@@ -1,0 +1,71 @@
+/**
+* Form
+**/
+#login {
+    padding-top: 4.688rem; /* same height as navbar*/
+    width: 100vw;
+    min-height: 27.5rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#login-form {
+    width: 16rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.form-image > i{
+    font-size: 4rem;
+    color: #c4c4c4;
+    margin-bottom: 1rem;
+    transition: .6s;
+}
+.form-input {
+    margin-bottom: .5rem;
+    width: 100%;
+}
+.form-input input {
+    width: 100%;
+    outline: none;
+    border: 2px solid #c4c4c4;
+    border-radius: 0;
+    padding: .5rem 1rem;
+}
+
+/**
+* Form Validation 
+**/
+.error-message {
+    font-size: .7rem;
+    padding-left: .3rem;
+    color: rgb(220, 53, 69);
+    overflow: hidden;
+    
+    max-height: 0;
+    transition: .6s;
+}
+.form-input input.success {
+    border-color: rgba(13, 110, 253, .6); 
+}
+.form-input input.error {
+    border-color: rgba(220, 53, 69, .6);
+}
+
+.form-input input[type="submit"] {
+    background-color: rgba(13, 110, 253, .7);
+    border-color:rgba(13, 110, 253, .8);
+    color: #fff;
+    transition: .6s;
+}
+.form-input input[type="submit"]:disabled {
+    background-color: rgba(248, 64, 83, 0.7);
+    border-color: rgba(220, 53, 69, .8);
+    opacity: .6;
+}
+input:invalid {
+    box-shadow: none;
+}

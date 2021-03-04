@@ -102,11 +102,6 @@ function loggedInOut() {
        setClassToMenuItems(loggedIn, 'hide', 'remove');
    }
 
-   function isLogged() {
-       // !! turns into boolean
-       return !!localStorage.getItem('auth');
-   }
-
    function getParentOfElementsWithClass(className) {
        const baseElements = document.getElementsByClassName(className);
        let list = [];
@@ -122,6 +117,11 @@ function loggedInOut() {
            item.classList[operation](className);
        }
    }
+}
+
+function isLogged() {
+    // !! turns into boolean
+    return !!localStorage.getItem('auth');
 }
     
 /**
