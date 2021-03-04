@@ -123,6 +123,17 @@ function isLogged() {
     // !! turns into boolean
     return !!localStorage.getItem('auth');
 }
+
+async function logout() {
+    const [status, res] = await makeRequest('GET', `${window.location.origin}/api/logout`);
+    
+    if(status == 204){
+        localStorage.removeItem('auth');
+        window.location = '/';
+    }else{
+        console.log('Something went wrong', res);
+    }
+}
     
 /**
 * Load
@@ -130,4 +141,10 @@ function isLogged() {
 document.addEventListener('DOMContentLoaded', () => {
     menu();
     loggedInOut();
+
+    document.getElementById('logout').onclick = event => {
+        event.preventDefault();
+
+        logout();
+    };
 });
