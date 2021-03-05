@@ -51,6 +51,54 @@ body {
     cursor: pointer;
 }
 
+/* Modal */
+#modal {
+    position: absolute;
+    margin: 0 calc(calc(22.5rem - 18.75rem) / 2);
+    z-index: 2;
+    width: 18.75rem;
+    padding: .6rem .5rem;
+    color: #fff;
+    border-radius: .25rem;
+    border-width: .125rem;
+    border-style: solid;
+    top: -20vh;
+    transition: top .6s;
+
+    display: flex;
+    flex-wrap: wrap;
+}
+#modal i {
+    margin-left: auto;
+    margin-top: -.2rem;
+    padding-right: .2rem;
+    font-size: 1rem;
+}
+#modal h1 {
+    font-size: 1.2rem;
+    letter-spacing: .05rem;
+    margin: 0;
+    margin-bottom: .6rem;
+}
+#modal p {
+    text-align: justify;
+    width: 95%;
+    font-size: .8rem;
+    letter-spacing: .02rem;
+    margin: 0;
+}
+#modal p a {
+    color: #fff;
+}
+#modal.success {
+    background-color: rgba(104, 147, 211, 0.9);
+    border-color: rgb(104, 147, 211);
+}
+#modal.error {
+    background-color: rgba(221, 84, 98, 0.9);
+    border-color: rgb(221, 84, 98);
+}
+
 /* Menu */
 #navbar #menu {
     position: absolute;

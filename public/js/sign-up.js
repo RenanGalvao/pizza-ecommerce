@@ -12,19 +12,37 @@ async function formHandler(event) {
     const [status, res] = await makeRequest('POST', `${window.location.origin}/api/users`, {name, email, street_address, password});
 
     if(status == 201){
-
         // Auto login then redirect 
         const [statusCode, token] = await makeRequest('POST', `${window.location.origin}/api/login`, {email, password});
-        
+        const timeOutSecs = 5;
+
         if(statusCode == 200){
+            // Accout created, tell the user that he's gonna be redirected
+            modal(
+                'Congratulations', 
+                'You account have been created. You gonna be redirected in 5 seconds. Or click <a href="/">here</a>.', 
+                'success'
+            ).show();
             localStorage.setItem('auth', true);
-            window.location = '/';
+
+            setTimeout(() => {    
+                window.location = '/';
+            }, timeOutSecs * 1000);
         }else{
             // Fallback redirect to login page
-            window.location = '/login';
+            modal(
+                'Congratulations',
+                'You account have been created. Please, <a href="/login">login</a> to continue.',
+                'success' 
+            ).show();
+
+            setTimeout(() => {
+                window.location = '/login';
+            }, timeOutSecs * 1000);
         }
     }else{
-        couldNotCreateUser(status, res);
+        document.querySelector('.form-input input[type="submit"]').setAttribute('disabled', '');
+        modal(res.err, res.message, 'error').show();
     }
 } 
 
@@ -45,17 +63,13 @@ function formValidator(){
         updateSubmit(['name', 'email', 'street_address', 'password'], 'submit');
     };
     street_address.oninput = () => {
-        validateInput('sign-up-form', street_address, /.?/);
+        validateInput('sign-up-form', street_address, /.+/);
         updateSubmit(['name', 'email', 'street_address', 'password'], 'submit');
     };
     password.oninput = () => {
         validateInput('sign-up-form', password, /.{8,}/);
         updateSubmit(['name', 'email', 'street_address', 'password'], 'submit');
     };
-}
-
-function couldNotCreateUser(status, res) {
-    console.log(status, res);
 }
 
 
@@ -67,6 +81,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         window.location = '/';
     }
     
+    // Event listeners
     document.getElementById('sign-up-form').onsubmit = formHandler;
     formValidator();
+
+    // Clean form to avoid filled inputs with no validation
+    document.getElementById('sign-up-form').reset();
+    document.querySelector('.form-input input[type="submit"]').setAttribute('disabled', '');
 });

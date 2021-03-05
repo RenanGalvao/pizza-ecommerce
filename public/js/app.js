@@ -206,6 +206,38 @@ async function logout() {
         console.log('Something went wrong', res);
     }
 }
+
+/* Modal */
+function modal(title, message, state) {
+    const modal = document.getElementById('modal');
+    const secondsToHide = 5;
+    
+    function show(){
+        setup();
+        modal.style.top = '15vh';
+    }
+
+    function hide(){
+        modal.style.top = '-20vh';
+    }
+
+    function setup(){
+        modal.classList.remove('error', 'success');
+        modal.querySelector('h1').innerHTML = title;
+        modal.querySelector('p').innerHTML = message;
+        modal.classList.add(state);
+    }
+
+    modal.querySelector('i').onclick = () => {
+        hide();
+    }
+
+    setTimeout(() => {
+        hide();
+    }, secondsToHide * 1000);
+
+    return {show}
+}
     
 /**
 * Load

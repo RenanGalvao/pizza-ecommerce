@@ -4,13 +4,22 @@ async function formHandler(event) {
     const password = document.getElementById('password').value;
 
     // Send request
-    const [status, token] = await makeRequest('POST', `${window.location.origin}/api/login`, {email, password});
+    const [status, res] = await makeRequest('POST', `${window.location.origin}/api/login`, {email, password});
 
     if(status == 200){
         localStorage.setItem('auth', true);
         window.location = '/';
     }else{
-        invalidLogin();
+        document.querySelector('.form-input input[type="submit"]').setAttribute('disabled', '');
+        if(status == 400){
+            modal('Invalid login', 'Please, verify your email and password.', 'error').show();
+        }else{
+            modal(
+                'Invalid login', 
+                'Email not registered. Please <a href="/sign-up">sign up</a>.', 
+                'error'
+            ).show();
+        }
     }
 }   
 
@@ -31,14 +40,6 @@ function formValidator(){
 }
 
 
-function invalidLogin() {
-    document.querySelector('.form-image i').style.color = 'rgba(220, 53, 69, .8)';
-    document.querySelector('.form-input input[type="submit"]').setAttribute('disabled', '');
-
-    alert('Invalid email and/or password. Please, try again.')
-}
-
-
 /**
 * Load
 **/
@@ -48,6 +49,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         window.location = '/';
     }
     
+    // Event listeners
     document.getElementById('login-form').onsubmit = formHandler;
     formValidator();
+
+    // Clean form to avoid filled inputs with no validation
+    document.getElementById('login-form').reset();
+    document.querySelector('.form-input input[type="submit"]').setAttribute('disabled', '');
 });
