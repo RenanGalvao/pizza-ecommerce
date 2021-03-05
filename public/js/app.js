@@ -29,6 +29,78 @@ function makeRequest(method, url, payload = {}){
     });
 }
 
+function validateInput(formId, inputElement, regex) {
+    const fieldName = inputElement.getAttribute('name');
+
+    if(!regex.test(inputElement.value)){
+        inputElement.classList.remove('success');
+        inputElement.classList.add('error');
+        updateMessage(formId, fieldName, 'error');
+    }else{
+        inputElement.classList.remove('error');
+        inputElement.classList.add('success');
+        updateMessage(formId, fieldName, 'success');
+    }
+}
+
+function updateMessage(formId, inputName, state) {
+    setInvalidFields(formId, inputName, state);
+
+    const form = document.getElementById(formId);
+    const errorMsgDiv = form.querySelector(`input[name="${inputName}"] + .error-message`);
+    const errors = form.getAttribute('data-error') ? form.getAttribute('data-error') : '';
+
+    // update message
+    if(errors.includes(inputName)){
+        errorMsgDiv.style.maxHeight = '1rem';
+    }else{
+        errorMsgDiv.style.maxHeight = '0';
+    }
+}
+
+function setInvalidFields(formId, input, state){
+    const form = document.getElementById(formId);
+    let prevState = form.getAttribute('data-error') ? form.getAttribute('data-error') : '';
+
+    // Add input to data-error list
+    if(state == 'error'){
+        if(prevState.length > 0 && !prevState.includes(input)){
+            form.setAttribute('data-error', `${input},${prevState}`); 
+        }
+        else if(prevState.length == 0){
+            form.setAttribute('data-error', input);
+        }
+    }
+    // Remove it
+    else{
+        if(prevState.includes(input)){
+            let errors = prevState.split(',');
+            errors.splice(errors.indexOf(input), 1);
+            form.setAttribute('data-error', errors);
+        }
+    }
+}
+
+function updateSubmit(elementsId, submitId) {
+    let elements = [];
+    const submit = document.getElementById(submitId);
+
+    for(const id of elementsId){
+        elements.push(document.getElementById(id));
+    }
+
+    // Verify
+    for(const element of elements){
+        if(!element.classList.contains('success')){
+            submit.setAttribute('disabled', '');
+            return;
+        }
+    }
+
+    // Nothing wrong, let user send the form
+    submit.removeAttribute('disabled')
+}
+
 function scrollSmothlyTo(height) {
     // take in account navbar's height
     const navbarHeight = document.getElementById('navbar').offsetHeight;

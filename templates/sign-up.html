@@ -1,0 +1,27 @@
+<div id="sign-up">
+    <form id="sign-up-form" action="/api/users" method="POST" autocomplete="off">
+        <div class="form-image">
+            <i class="fas fa-user"></i>
+        </div>
+        <div class="form-input">
+            <input type="text" name="name" id="name" placeholder="Firstname Lastname">
+            <div class="error-message">*Must contain at least first and lastname.</div>
+        </div>
+        <div class="form-input">
+            <input type="email" name="email" id="email" placeholder="Email">
+            <div class="error-message">*Use a valid email. eg.: example@domain.com.</div>
+        </div>
+        <div class="form-input">
+            <input type="text" name="street_address" id="street_address" placeholder="Street Address" >
+            <div class="error-message">*Use a valid street address.</div>
+        </div>
+        <div class="form-input">
+            <input type="password" name="password" id="password" placeholder="Password">
+            <div class="error-message">*Must contain at least 8 characters.</div>
+        </div>
+        <div class="form-input">
+            <input type="submit" id="submit" value="Sign Up" disabled>
+            <div class="error-message"></div>
+        </div>
+    </form>
+</div>
