@@ -47,8 +47,8 @@ function updateMessage(formId, inputName, state) {
     setInvalidFields(formId, inputName, state);
 
     const form = document.getElementById(formId);
-    const errorMsgDiv = form.querySelector(`input[name="${inputName}"] + .error-message`);
-    const errors = form.getAttribute('data-error') ? form.getAttribute('data-error') : '';
+    const errorMsgDiv = form.querySelector(`input[name="${inputName}"] ~ .error-message`);
+    const errors = form.getAttribute('data-error') ? form.getAttribute('data-error').split(',') : [''];
 
     // update message
     if(errors.includes(inputName)){
@@ -64,7 +64,7 @@ function setInvalidFields(formId, input, state){
 
     // Add input to data-error list
     if(state == 'error'){
-        if(prevState.length > 0 && !prevState.includes(input)){
+        if(prevState.length > 0 && !prevState.split(',').includes(input)){
             form.setAttribute('data-error', `${input},${prevState}`); 
         }
         else if(prevState.length == 0){
