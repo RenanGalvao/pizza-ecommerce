@@ -5,7 +5,7 @@
 #sign-up {
     padding-top: 4.688rem; /* same height as navbar*/
     width: 100vw;
-    min-height: 27.5rem;
+    min-height: 35rem;
 
     display: flex;
     flex-direction: column;
