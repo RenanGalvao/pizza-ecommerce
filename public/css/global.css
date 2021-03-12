@@ -53,7 +53,7 @@ body {
 
 /* Modal */
 #modal {
-    position: absolute;
+    position: fixed;
     margin: 0 calc(calc(22.5rem - 18.75rem) / 2);
     z-index: 2;
     width: 18.75rem;

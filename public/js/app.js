@@ -144,6 +144,19 @@ function carouselControl(itemsLength){
     return dots;
 }
 
+async function addItemToCart(id, title){
+    const payload = {
+        item_id: id,
+        quantity: 1,
+    };
+    const [status, res] = await makeRequest('POST', `${window.location.origin}/api/cart`, payload);
+
+    if(status == 201){
+        modal('Product added to cart.', `Check all details of ${title} at <a href="/cart">cart</a>.`, 'success').show();
+    }else{
+        modal('Error', 'Could not add the product to the cart.', 'error').show();
+    }
+}
 
 /* User menu */
 function menu() {
@@ -248,7 +261,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('logout').onclick = event => {
         event.preventDefault();
-
         logout();
     };
 });

@@ -29,15 +29,13 @@ function generateCarouselHtml(items){
                <h1 class="title">${item.name} <span class="price">$${item.price}</span></h1>
                <p class="description">${item.description}</p>
             </div>
-            <button class="buy">
+            <button data-id="${item.id}" data-title="${item.name}" class="buy">
                <img src="/public/svg/shop_cart.svg" alt="Buy button">
             </button>`
         );
     }
     return carouselHtml;
 }
-
-
 
 async function loadItemsFromMenu() {
     const [status, items] = await makeRequest('GET', `${window.location.origin}/api/menu`);
@@ -74,7 +72,7 @@ function insertItemsInHTML(items){
                         <img src="/public/svg/dolar_sign.svg" alt="dolar sign">
                         <span>${item.price}</span>
                     </div>
-                    <button class="buy"><img src="/public/svg/shop_cart.svg" alt="buy button"></button>
+                    <button data-id="${item.id}" data-title="${item.name}" class="buy"><img src="/public/svg/shop_cart.svg" alt="buy button"></button>
                 </div>
             </div>
         </div>` + productList.innerHTML; // Append at top
@@ -86,6 +84,15 @@ function insertItemsInHTML(items){
 **/
 document.addEventListener('DOMContentLoaded', async () => {
     await loadItemsFromMenu();
+    await loadCarousel();
     handleOrderNowButton();
-    loadCarousel();
+
+    const buyButtons = document.getElementsByClassName('buy');
+    for(const buyButton of buyButtons){
+        buyButton.onclick = async event => {
+            const id = buyButton.getAttribute('data-id');
+            const title = buyButton.getAttribute('data-title');
+            await addItemToCart(id, title);
+        };
+    } 
 });
